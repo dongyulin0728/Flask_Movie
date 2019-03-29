@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block head %}
+    <title>{% block title %}上传{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index_upload.css') }}">
+    <!-- fileinput样式主题文体 -->
+    <link href="{{ url_for('static',filename='css/fileinput.css') }}" media="all" rel="stylesheet" type="text/css"/>
+    <script src="{{ url_for('static',filename='js/piexif.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/sortable.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/purify.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/fileinput.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/fas/theme.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static',filename='js/zh.js') }}" type="text/javascript"></script>
+
+{% endblock %}
+
+{% block main %}
+    <div class="modal-body">
+        <a href="" class="form-control" style="border:none;">上传照片</a>
+        <input type="file" name="reportFile" id="reportFile" multiple class="file-loading"/>
+    </div>
+    <script>
+        $("#reportFile").fileinput({
+        theme: 'fas',
+        language: 'zh',
+        uploadUrl: '{{ url_for('upload') }}', // you must set a valid URL here else you will get an error
+        allowedFileExtensions: ['jpg', 'png', 'gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        //allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function (filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+    });
+    </script>
+{% endblock %}

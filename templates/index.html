@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block head %}
+
+    <title>{% block title %}首页{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/index_upload.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/smusic.css') }}">
+    <script src="{{ url_for('static',filename='js/smusic.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/musicList.js') }}"></script>
+
+
+    <style>
+        /* Make the image fully responsive */
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+{% endblock %}
+<body>
+{% block main %}
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="{{ url_for('upload') }}">上传视频图片</a></li>
+            <li role="presentation"><a href="#">日记</a></li>
+            <li role="presentation"><a href="#">随记</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="grid-music-container f-usn">
+        <div class="m-music-play-wrap">
+            <div class="u-cover"></div>
+            <div class="m-now-info">
+                <h1 class="u-music-title"><strong>标题</strong>
+                    <small>歌手</small>
+                </h1>
+                <div class="m-now-controls">
+                    <div class="u-control u-process">
+                        <span class="buffer-process"></span>
+                        <span class="current-process"></span>
+                    </div>
+                    <div class="u-control u-time">00:00/00:00</div>
+                    <div class="u-control u-volume">
+                        <div class="volume-process" data-volume="0.50">
+                            <span class="volume-current"></span>
+                            <span class="volume-bar"></span>
+                            <span class="volume-event"></span>
+                        </div>
+                        <a class="volume-control"></a>
+                    </div>
+                </div>
+                <div class="m-play-controls">
+                    <a class="u-play-btn prev" title="上一曲"></a>
+                    <a class="u-play-btn ctrl-play play" title="暂停"></a>
+                    <a class="u-play-btn next" title="下一曲"></a>
+                    <a class="u-play-btn mode mode-list current" title="列表循环"></a>
+                    <a class="u-play-btn mode mode-random" title="随机播放"></a>
+                    <a class="u-play-btn mode mode-single" title="单曲循环"></a>
+                </div>
+            </div>
+        </div>
+        <div class="f-cb">&nbsp;</div>
+        <div class="m-music-list-wrap"></div>
+        <div class="m-music-lyric-wrap">
+            <div class="inner">
+                <ul class="js-music-lyric-content">
+                    <li class="eof">暂无歌词...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    {#<script src="src/js/musicList.js"></script>#}
+    {#<script src="src/js/smusic.js"></script>#}
+    <script>
+        new SMusic({
+            musicList: musicList,
+            autoPlay: true,  //是否自动播放
+            defaultMode: 1,   //默认播放模式，随机
+            callback: function (obj) {  //返回当前播放歌曲信息
+                console.log(obj);
+                /*{title: "赤血长殷", singer: "王凯", cover: "http://data.smohan.net/upload/other/cxcy/cover.jpg", src: "http://data.smohan.net/upload/other/cxcy/music.mp3", index: 4}*/
+            }
+        });
+    </script>
+{% endblock %}
+
+</body>
+</html >

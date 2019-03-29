@@ -1,0 +1,12 @@
+.form-container{
+    width: 300px;
+    margin: 0 auto;
+}
+.form-container .form-signin .form-group .remember-me{
+    float: left;
+    margin-top: 5px;
+}
+.form-container .form-signin .form-group .unregist{
+    float: right;
+     margin-top: 5px;
+}

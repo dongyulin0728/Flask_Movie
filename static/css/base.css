@@ -1,0 +1,24 @@
+.logo{
+    width:100px;
+}
+body{
+    background: transparent;
+    background:url("../images/login.jpg") no-repeat;
+    background-size: 100%;
+}
+.main {
+    background:transparent;
+    width: 730px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px;
+    margin-top: 10%;
+}
+
+.page-title{
+    text-align: center;
+}
+
+.navbar-nav{
+    margin-left: 20px;
+}

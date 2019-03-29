@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}注册{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login_regist.css') }}">
+{% endblock %}
+
+{% block main %}
+    <div class="form-container">
+        <form class="form-signin" method="POST">
+            <h2 class="page-title">请先注册</h2>
+
+            <div class="form-group">
+                <label for="inputTelephone" class="sr-only">手机号</label>
+                <input type="text" id="telephone" class="form-control" placeholder="手机号" required autofocus
+                       name="telephone">
+            </div>
+            <div class="form-group">
+                <label for="inputusername" class="sr-only">用户名</label>
+                <input type="text" class="form-control" placeholder="用户名" required autofocus
+                       name="usename">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">密码</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="密码" required
+                       name="passwd1">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">确认密码</label>
+                <input type="password" class="form-control" placeholder="确认密码" required
+                       name="passwd2">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
